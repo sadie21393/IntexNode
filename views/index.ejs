@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Turtle Shelter Project</title>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+<style>
+    /* General Reset */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+}
+
+/* Header */
+.header {
+    background-color: #e0e0db; /* Updated to #e0e0db */
+    color: #333; /* Adjusted for contrast */
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.header h1 a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.header .nav ul {
+    display: flex;
+}
+
+.header .nav ul li {
+    margin: 0 15px;
+}
+
+.header .nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.header .nav ul li a:hover {
+    color: #992f2f; /* Matches the donate button color */
+}
+
+.btn.donate-btn {
+    background-color: #992f2f; /* Updated to #992f2f */
+    padding: 10px 20px;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn.donate-btn:hover {
+    background-color: #7a2626; /* Slightly darker hover effect */
+    transform: scale(1.05);
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('../assets/tsp1.jpg'); /* Set the background image */
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Eliminate any unwanted spacing */
+    display: flex; /* Enable flexbox for content alignment */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    text-align: center; /* Center align text */
+    padding: 20px; /* Optional: Add padding for smaller screens */
+}
+
+.hero-content {
+    max-width: 800px; /* Limit the width of the text block */
+    color: white; /* Ensure the text is visible */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
+}
+
+.hero h1 {
+    font-size: 2.5rem; /* Adjust heading size */
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem; /* Adjust paragraph size */
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    gap: 20px; /* Add spacing between buttons */
+}
+
+.buttons .btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #992f2f; /* Updated donate button color */
+}
+
+.btn-primary:hover {
+    background-color: #7a2626; /* Slightly darker hover effect */
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #2980b9;
+}
+
+.btn-secondary:hover {
+    background-color: #3498db;
+    transform: scale(1.05);
+}
+
+/* About Section */
+.about {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.about h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #34495e;
+}
+
+.about-content {
+    display: flex;
+    align-items: center; /* Vertically center image and text */
+    justify-content: center; /* Horizontally center image and text */
+    gap: 40px; /* Space between image and text */
+    flex-wrap: wrap; /* Ensure it wraps for smaller screens */
+}
+
+.about-logo img {
+    max-height: 200px; /* Adjust image size */
+    width: auto;
+    border-radius: 10px; /* Optional: rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: shadow for emphasis */
+}
+
+.about-text {
+    max-width: 600px; /* Restrict text width for readability */
+    font-size: 1.2rem;
+    text-align: left; /* Left-align text */
+    line-height: 1.6; /* Improve text readability */
+}
+
+/* Footer */
+footer {
+    background-color: #e0e0db; /* Updated to #e0e0db */
+    color: #333; /* Adjusted for contrast */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+footer .social-links li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+footer .social-links a {
+    color: #333; /* Matches footer text color */
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+footer .social-links a:hover {
+    color: #992f2f; /* Matches donate button hover color */
+}
+
+</style>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#story">Jen's Story</a></li>
+                    <li><a href="#initiatives">Initiatives</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#donate" class="btn donate-btn">Donate Now</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Empowering Hope, One Vest at a Time</h1>
+            <p>At Turtle Shelter Project, we believe everyone deserves warmth and dignity. Together, we can make this a reality.</p>
+            <div class="buttons">
+                <a href="#donate" class="btn btn-primary">Donate Now</a>
+                <a href="#initiatives" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-logo">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5b5a266fcef372310148d6d6/1532816947856-MIMDFIUYZHABRDQ4TWZC/Original+logo+low+resolution.png?format=750w" 
+                         alt="Turtle Shelter Project Logo">
+                </div>
+                <div class="about-text">
+                    <p>The Turtle Shelter Project began with a simple idea: to make winters safer for our homeless community. With your help, we've been able to distribute high-tech winter vests and spread warmth throughout northern Utah. We’re more than an organization—we’re a family, and we’re so glad you’re here to be part of it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <!-- Jen's Story Section -->
+    <section id="story" class="story">
+        <div class="container">
+            <h2>What Is a Turtle Shelter Vest?</h2>
+            <p><strong>A high-tech but simple solution to help save lives –</strong> a portable "shelter" you can carry with you, just like a turtle… and you can help!</p>
+            <p>One winter, when Jen was homeless, seven of her friends froze to death.</p>
+            <p>Jen is no longer homeless and has figured out a solution: high-tech foam vests that are inexpensive, keep a person warm to 10 degrees below zero, help save lives, and alleviate suffering.</p>
+            <p><strong>YOU</strong> can request vests for your community – and you can make vests and have your friends, business colleagues, church members, or club make vests, too!</p>
+            <div class="story-actions">
+                <div class="about-action">
+                    <h3>About</h3>
+                    <p>Jen's story, from homelessness to saving lives, plus our mission, team, and all about the tech that makes our vests so special.</p>
+                    <a href="#about" class="btn btn-secondary">Learn More →</a>
+                </div>
+                <div class="take-action">
+                    <h3>Take Action</h3>
+                    <p>Ready to take the next step? You can request vests, donate, make vests yourself, or organize an event!</p>
+                    <a href="#donate" class="btn btn-primary">Find Out How →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Initiatives Section -->
+    <section id="initiatives" class="initiatives">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <div class="initiatives-container">
+                <div class="initiative">
+                    <img src="https://via.placeholder.com/300x200" alt="Donate" class="initiative-image">
+                    <h3>Donate</h3>
+                    <p>Your contributions directly support our mission of providing life-saving vests to those in need.</p>
+                </div>
+                <div class="initiative">
+                    <img src="https://via.placeholder.com/300x200" alt="Volunteer" class="initiative-image">
+                    <h3>Volunteer</h3>
+                    <p>Be a part of our team! Join us in assembling vests and hosting community drives.</p>
+                </div>
+                <div class="initiative">
+                    <img src="https://via.placeholder.com/300x200" alt="Host Events" class="initiative-image">
+                    <h3>Host Events</h3>
+                    <p>Bring your community together by organizing events to support our cause.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Turtle Shelter Project. All Rights Reserved.</p>
+                <ul class="social-links">
+                    <li><a target="_blank" href="https://www.facebook.com/turtleshelterproject/"><i class="fab fa-facebook"></i></a></li>
+                    <li><a target="_blank" href="https://www.instagram.com/turtleshelterproject/?locale=Online%2Bentertainment%2C%2Breal%2Bperson%2C%2Belectronic%2Bchess%2Band%2Bcards%2C%2Blottery%2C%2Bsports%2C%2Bcomprehensive%2Breputation%2B(Telegram%3A%2B%40UUjd888888).aqpg&hl=en"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+ 
